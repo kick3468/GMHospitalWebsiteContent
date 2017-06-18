@@ -17,47 +17,13 @@
     </style>
 </head>
 <body class="container-fluid">
-        <div id="forgetPasswd" class="modal fade" role="dialog">
+        <div id="serverAdminMsg" class="modal fade" role="dialog">
             <div class="modal-dialog">
 
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-body">
-                        <p>Please enter the email that you have entered while registration.</p>
-                        <input type="email" id="resetEmail" name="resetEmail" class="form-group form-control input-md">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success" id="callResetPassword" data-dismiss="modal">Submit</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="resetPasswd" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <p>Please enter the email that you have entered while registration.</p>
-                        <input type="email" id="setEmail" name="setEmail" class="form-group form-control input-md">
-                        <input type="password" id="curPassword" name="curPassword" class="form-group form-control input-md" placeholder="present Password">
-                        <input type="password" id="newPassword" name="newPassword" class="form-group form-control input-md" placeholder="new Password">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success" id="setPassword" data-dismiss="modal">Submit</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="serverMsg" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <p id="serverReply"></p>
+                        <p id="serverAdminReply"></p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -78,29 +44,30 @@
                     <div class="col-sm-1 col-md-1 col-lg-1 col-xs-1"><image src="/static/patients/CSS/images/Kamineni_Srinivas.jpg"/></div>
                     <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3"></div>
                 </div>
+
             </div>
             <div class="panel-body">
                 <div class="leftBorder">
                 <br/>
-                <div class="row">
+                <div class="row" id="heading">
                     <div class="col-sm-5 col-md-5 col-lg-5 col-xs-5"></div>
                     <div class="col-sm-2 col-md-2 col-lg-2 col-xs-2">
-                        <center><h4>User Login</h4></center>
+                        <center><h4>Admin Login</h4></center>
                     </div>
                     <div class="col-sm-5 col-md-5 col-lg-5 col-xs-5"></div>
                 </div>
-                <form action="/patients/verifyUser" method="POST"> {% csrf_token %}
-                <div class="row">
+                <form action="/patients/verifyAdmin" method="POST"> {% csrf_token %}
+                <div class="row" id="emailRow">
                     <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4"></div>
                     <div class="col-sm-1 col-md-1 col-lg-1 col-xs-1">
-                        <h4>Email</h4>
+                        <h4 >Email</h4>
                     </div>
                     <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
-                        <input type="text" id="email" name="email" class="form-group form-control input-md">
+                        <input type="text" id="adminEmail" name="adminEmail" class="form-group form-control input-md">
                     </div>
                     <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4"></div>
                 </div>
-                 <div class="row">
+                 <div class="row" id="passRow">
                     <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4"></div>
                     <div class="col-sm-1 col-md-1 col-lg-1 col-xs-1">
                         <h4>password</h4>
@@ -110,8 +77,7 @@
                     </div>
                     <div class="col-sm-5 col-md-5 col-lg-5 col-xs-5"></div>
                 </div>
-                <input type="text" id="type" value="1" hidden="true">
-                <div class="row">
+                <div class="row" id="optionRow">
                     <div class="col-sm-5 col-md-5 col-lg-5 col-xs-5"></div>
                     <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
                         <a id="resetPwd" href="#">reset Password</a>&nbsp;&nbsp;&nbsp;
@@ -120,19 +86,17 @@
                     <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4"></div>
                 </div>
                 <br/>
-                <div class="row">
+                <div class="row" id="loginButton">
                     <div class="col-sm-5 col-md-5 col-lg-5 col-xs-5"></div>
                     <div class="col-sm-2 col-md-2 col-lg-2 col-xs-2">
-                        <center><input type="submit" class="btn btn-success" id="login" value="login"></center>
+                        <center><input type="submit" class="btn btn-success" id="adminLogin" value="login"></center>
                     </div>
                     <div class="col-sm-5 col-md-5 col-lg-5 col-xs-5"></div>
                 </div>
                 </form>
                 <div class="row">
                     <div class="col-sm-5 col-md-5 col-lg-5 col-xs-5"></div>
-                    <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4">
-                        <h5>if not already registered, create one by clicking <a target="_blank" href="/patients/newUser">here</a>.</h5>
-                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4"></div>
                     <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3"></div>
                 </div>
                 <br/>

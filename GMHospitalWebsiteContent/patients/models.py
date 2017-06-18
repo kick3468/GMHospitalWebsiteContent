@@ -25,9 +25,12 @@ class AdminLogin(models.Model):
 
     loginAlias = models.CharField(max_length=50)
     password = models.CharField(max_length=50)
+    email = models.CharField(max_length=100, primary_key=True)
 
 
 class Logins(models.Model):
 
     loginAlias = models.CharField(max_length=50)
     password = models.CharField(max_length=50)
+    approved = models.CharField(max_length=1)
+    email = models.CharField(max_length=100, primary_key=True)

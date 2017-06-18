@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/static/patients/CSS/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="/static/patients/JS/bootstrap.min.js"></script>
+    <script src="/static/patients/JS/ajax.js"></script>
+    <style>
+        .leftBorder{
+            border: 2px solid #31708f;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body class="container-fluid">
+    <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Message</h4>
+        </div>
+        <div class="modal-body">
+          <p id="message"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+            <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3"></div>
+            <div class="col-sm-1 col-md-1 col-ld-1 col-xs-1"><image src="/static/patients/CSS/images/brand.jpg"/></div>
+            <div class="col-sm-1 col-md-1 col-ld-1 col-xs-1"><span class="pull-left"><image src="/static/patients/CSS/images/cmnew.jpg" hegiht="60px" width="60px"/></span></div>
+            <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+                <h3>Primary Health Center</h3>
+                <center><h5>Kammapalli, Chittoor(Dt)</h5></center>
+            </div>
+            <div class="col-sm-1 col-md-1 col-lg-1 col-xs-1"><image src="/static/patients/CSS/images/Kamineni_Srinivas.jpg"/></div>
+            <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3"></div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="leftBorder">
+                <br/>
+                <div class="row">
+                    <div class="col-sm-5 col-md-5 col-lg-5 col-xs-5"></div>
+                    <div class="col-sm-2 col-md-2 col-lg-2 col-xs-2">
+                        <center><h4>Staff Registration</h4></center>
+                    </div>
+                    <div class="col-sm-5 col-md-5 col-lg-5 col-xs-5"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4"></div>
+                    <div class="col-sm-2 col-md-2 col-lg-2 col-xs-2">
+                        <h4>user name:</h4>
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+                        <input type="text" class="form-group form-control input-md" id="userName" name="userName">
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4"></div>
+                    <div class="col-sm-2 col-md-2 col-lg-2 col-xs-2">
+                        <h4>password:</h4>
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+                        <input type="password" class="form-group form-control input-md" id="passwd" name="passwd">
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4"></div>
+                    <div class="col-sm-2 col-md-2 col-lg-2 col-xs-2">
+                        <h4>Confirm password:</h4>
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+                        <input type="password" class="form-group form-control input-md" id="cpasswd" name="cpasswd">
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4"></div>
+                    <div class="col-sm-2 col-md-2 col-lg-2 col-xs-2">
+                        <h4>email:</h4>
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+                        <input type="text" class="form-group form-control input-md" id="email" name="email">
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3"></div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-sm-5 col-md-5 col-lg-5 col-xs-5"></div>
+                    <div class="col-sm-2 col-md-2 col-lg-2 col-xs-2">
+                        <center><button class="btn btn-success" id="save" name="save">save</button></center>
+                    </div>
+                    <div class="col-sm-5 col-md-5 col-lg-5 col-xs-5"></div>
+                </div>
+                <br/>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="row">
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6"></div>
+                <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+                    <h4>Hospital Details</h4>
+                    <h5>Primary Health Center</h5>
+                    <h5>Kammapalli</h5>
+                    <h5>Tirupati</h5>
+                    <h5>+91 99 630 22 802</h5>
+                    <h5>517 501.</h5>
+                </div>
+                <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+                    <h4>Quick Links</h4>
+                    <a href="#"><h5>Home Page</h5></a>
+                    <a href="#"><h5>Blog</h5></a>
+                    <a href="#"><h5>Gallery</h5></a>
+                    <a href="#"><h5>Contact Us</h5></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>adminPage</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/static/patients/CSS/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="/static/patients/JS/bootstrap.min.js"></script>
+    <script src="/static/patients/JS/ajax.js"></script>
+    <style>
+        .leftBorder{
+            border: 2px solid #31708f;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body class="container-fluid">
+        <div id="serverAdminMsg" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <p id="serverAdminReply"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="pendingApproval" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <table id="approveTable" class="table table-striped">
+                            <thead>
+                               <th></th>
+                               <th>Email</th>
+                               <th>Name</th>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="approveUsers" class="btn btn-success" data-dismiss="modal">approve</button>
+                        <button type="button" id="deleteTable" class="btn btn-danger">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3"></div>
+                    <div class="col-sm-1 col-md-1 col-ld-1 col-xs-1"><image src="/static/patients/CSS/images/brand.jpg"/></div>
+                    <div class="col-sm-1 col-md-1 col-ld-1 col-xs-1"><span class="pull-left"><image src="/static/patients/CSS/images/cmnew.jpg" hegiht="60px" width="60px"/></span></div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+                        <h3>Primary Health Center</h3>
+                        <center><h5>Kammapalli, Chittoor(Dt)</h5></center>
+                    </div>
+                    <div class="col-sm-1 col-md-1 col-lg-1 col-xs-1"><image src="/static/patients/CSS/images/Kamineni_Srinivas.jpg"/></div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3"></div>
+                </div>
+                <div class="row">
+                <div class="col-sm-2 col-md-2 col-lg-2 col-xs-2">
+                    <span class="pull-left"><h5 class="col">Hello: {{aname}}</h5></span>
+                </div>
+                <div class="col-sm-9 col-md-9 col-lg-9 col-xs-9"></div>
+                <div class="col-sm-1 col-md-1 col-lg-1 col-xs-1">
+                    <a href="/patients/alogout"><h5><span class="col">Logout</span></h5></a>
+                </div>
+            </div>
+            </div>
+            <div class="panel-body">
+                <div class="leftBorder">
+                <br/>
+                <div class="row" id="option1">
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3"></div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+                        <center><input type="submit" class="btn btn-success" id="unapprovedUsers" value="Staff Approval"></center>
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+                        <center>
+                            <p> This option will show list of staff who requested for approval, verify carefully and approve the request </p>
+                        </center>
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3"></div>
+                </div><br/>
+                <div class="row" id="option2">
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3"></div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+                        <center><input type="submit" class="btn btn-success" id="searchPatients" value="Search Patients"></center>
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+                        <center>
+                            <p> This option will allow to search for an user abd returns all the details of the user</p>
+                        </center>
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3"></div>
+                </div><br/>
+                <div class="row" id="option3">
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3"></div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+                        <center><input type="submit" class="btn btn-success" id="listPatients" value="List Of Patients"></center>
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+                        <center>
+                            <p> Lists all the patients registered under Kammapalli PHC</p>
+                        </center>
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3"></div>
+                </div><br/>
+                <div class="row" id="option4">
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3"></div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+                        <center><input type="submit" class="btn btn-success" id="listUser" value="List Of User"></center>
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+                        <center>
+                            <p> Lists all the staff registered under Kammapalli PHC</p>
+                        </center>
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3"></div>
+                </div><br/>
+                <div class="row" id="option5">
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3"></div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+                        <center><input type="submit" class="btn btn-success" id="statics" value="Statics"></center>
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+                        <center>
+                            <p> Give you day, month wise stats, click explore more</p>
+                        </center>
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3"></div>
+                </div><br/>
+                <div class="row">
+                    <div class="col-sm-5 col-md-5 col-lg-5 col-xs-5"></div>
+                    <div class="col-sm-4 col-md-4 col-lg-4 col-xs-4"></div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3"></div>
+                </div>
+                <br/>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6"></div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+                        <h4>Hospital Details</h4>
+                        <h5>Primary Health Center</h5>
+                        <h5>Kammapalli</h5>
+                        <h5>Tirupati</h5>
+                        <h5>+91 99 630 22 802</h5>
+                        <h5>517 501.</h5>
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+                        <h4>Quick Links</h4>
+                        <a href="#"><h5>Home Page</h5></a>
+                        <a href="#"><h5>Blog</h5></a>
+                        <a href="#"><h5>Gallery</h5></a>
+                        <a href="#"><h5>Contact Us</h5></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
